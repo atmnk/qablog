@@ -1,12 +1,17 @@
 ---
 layout: default
 ---
-{% assign items = site[page.cn] %}
-{% for item in items %}
-<li>
-    {% include {{ page.cn | append: "-summary" }}.html %}
-</li>
-{% endfor %}
-{% for i in (1..20) %}
-<li><a href="#">Master {{i}}</a></li>
-{% endfor %}
+{% assign items = site[page.cn] | sort: "date" | reverse %}
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">Most Recent in {{page.title}}</h3>
+    </div>
+    <div class="panel-body">
+        {% for item in items limit:3 %}
+        <div class="well">
+            {% include {{ page.cn | append: "-summary" }}.html %}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
