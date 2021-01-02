@@ -1,0 +1,12 @@
+---
+layout: default
+---
+{% assign items = site[page.cn] %}
+{% for item in items %}
+<li>
+    {% include {{ page.cn | append: "-summary" }}.html %}
+</li>
+{% endfor %}
+{% for i in (1..20) %}
+<li><a href="#">Master {{i}}</a></li>
+{% endfor %}
